@@ -244,6 +244,10 @@
     }
     .hero-flywheel .hball circle { filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.35)); }
     .hero-flywheel .hball.active circle { filter: drop-shadow(0 8px 22px rgba(232, 168, 56, 0.55)); }
+    .hero-flywheel .hbadge-body { transform-origin: 0 0; transition: none; }
+    @media (max-width: 960px) {
+      .hero-flywheel .hbadge-body { transform: scale(1.5); }
+    }
     .hero-scroll { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; opacity: 0; animation: fadeIn 1s 1.5s ease forwards; z-index: 2; }
     .hero-scroll span { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.4); }
     .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent); animation: scrollPulse 2s ease infinite; }
@@ -1021,10 +1025,12 @@
               <!-- 1. Chinuch is a partnership -->
               <g class="hpillar">
                 <g class="hbadge" opacity="0">
-                  <rect x="-130" y="-20" width="260" height="40" rx="20" fill="url(#hfg1)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-                  <text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="Playfair Display, Georgia, serif" font-size="15" fill="#fff" paint-order="stroke" stroke="rgba(0,0,0,0.25)" stroke-width="0.5">
+                  <g class="hbadge-body">
+                    <rect x="-130" y="-20" width="260" height="40" rx="20" fill="url(#hfg1)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                    <text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="Playfair Display, Georgia, serif" font-size="15" fill="#fff" paint-order="stroke" stroke="rgba(0,0,0,0.25)" stroke-width="0.5">
                     <tspan font-style="italic">Chinuch</tspan><tspan> is a </tspan><tspan font-weight="700">partnership</tspan><tspan>.</tspan>
                   </text>
+                  </g>
                 </g>
                 <g class="hball">
                   <circle r="36" fill="url(#hfg1)"/>
@@ -1036,10 +1042,12 @@
               <!-- 2. Higher education matters -->
               <g class="hpillar">
                 <g class="hbadge" opacity="0">
-                  <rect x="-130" y="-20" width="260" height="40" rx="20" fill="url(#hfg2)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-                  <text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="Playfair Display, Georgia, serif" font-size="15" fill="#fff" paint-order="stroke" stroke="rgba(0,0,0,0.25)" stroke-width="0.5">
+                  <g class="hbadge-body">
+                    <rect x="-130" y="-20" width="260" height="40" rx="20" fill="url(#hfg2)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                    <text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="Playfair Display, Georgia, serif" font-size="15" fill="#fff" paint-order="stroke" stroke="rgba(0,0,0,0.25)" stroke-width="0.5">
                     <tspan font-weight="700">Higher education</tspan><tspan> matters.</tspan>
                   </text>
+                  </g>
                 </g>
                 <g class="hball">
                   <circle r="36" fill="url(#hfg2)"/>
@@ -1051,10 +1059,12 @@
               <!-- 3. Yiddishkeit is an experience -->
               <g class="hpillar">
                 <g class="hbadge" opacity="0">
-                  <rect x="-140" y="-20" width="280" height="40" rx="20" fill="url(#hfg3)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
-                  <text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="Playfair Display, Georgia, serif" font-size="15" fill="#fff" paint-order="stroke" stroke="rgba(0,0,0,0.35)" stroke-width="0.5">
+                  <g class="hbadge-body">
+                    <rect x="-140" y="-20" width="280" height="40" rx="20" fill="url(#hfg3)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+                    <text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="Playfair Display, Georgia, serif" font-size="15" fill="#fff" paint-order="stroke" stroke="rgba(0,0,0,0.35)" stroke-width="0.5">
                     <tspan font-style="italic">Yiddishkeit</tspan><tspan> is an </tspan><tspan font-weight="700">experience</tspan><tspan>.</tspan>
                   </text>
+                  </g>
                 </g>
                 <g class="hball">
                   <circle r="36" fill="url(#hfg3)"/>
@@ -1068,10 +1078,12 @@
               <!-- 4. Real-life readiness -->
               <g class="hpillar">
                 <g class="hbadge" opacity="0">
-                  <rect x="-140" y="-20" width="280" height="40" rx="20" fill="url(#hfg4)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-                  <text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="Playfair Display, Georgia, serif" font-size="15" fill="#fff" paint-order="stroke" stroke="rgba(0,0,0,0.25)" stroke-width="0.5">
+                  <g class="hbadge-body">
+                    <rect x="-140" y="-20" width="280" height="40" rx="20" fill="url(#hfg4)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                    <text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="Playfair Display, Georgia, serif" font-size="15" fill="#fff" paint-order="stroke" stroke="rgba(0,0,0,0.25)" stroke-width="0.5">
                     <tspan font-weight="700">Real-life readiness</tspan><tspan> is a must.</tspan>
                   </text>
+                  </g>
                 </g>
                 <g class="hball">
                   <circle r="36" fill="url(#hfg4)"/>
@@ -1084,10 +1096,12 @@
               <!-- 5. Derech halimud -->
               <g class="hpillar">
                 <g class="hbadge" opacity="0">
-                  <rect x="-135" y="-20" width="270" height="40" rx="20" fill="url(#hfg5)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-                  <text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="Playfair Display, Georgia, serif" font-size="15" fill="#fff" paint-order="stroke" stroke="rgba(0,0,0,0.25)" stroke-width="0.5">
+                  <g class="hbadge-body">
+                    <rect x="-135" y="-20" width="270" height="40" rx="20" fill="url(#hfg5)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                    <text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="Playfair Display, Georgia, serif" font-size="15" fill="#fff" paint-order="stroke" stroke="rgba(0,0,0,0.25)" stroke-width="0.5">
                     <tspan font-style="italic">Derech halimud</tspan><tspan> begins here.</tspan>
                   </text>
+                  </g>
                 </g>
                 <g class="hball">
                   <circle r="36" fill="url(#hfg5)"/>
@@ -1099,10 +1113,12 @@
               <!-- 6. Middos: lev and nefesh -->
               <g class="hpillar">
                 <g class="hbadge" opacity="0">
-                  <rect x="-145" y="-20" width="290" height="40" rx="20" fill="url(#hfg6)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-                  <text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="Playfair Display, Georgia, serif" font-size="15" fill="#fff" paint-order="stroke" stroke="rgba(0,0,0,0.25)" stroke-width="0.5">
+                  <g class="hbadge-body">
+                    <rect x="-145" y="-20" width="290" height="40" rx="20" fill="url(#hfg6)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+                    <text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="Playfair Display, Georgia, serif" font-size="15" fill="#fff" paint-order="stroke" stroke="rgba(0,0,0,0.25)" stroke-width="0.5">
                     <tspan font-style="italic">Middos</tspan><tspan> involve </tspan><tspan font-style="italic">lev</tspan><tspan> and </tspan><tspan font-style="italic">nefesh</tspan><tspan>.</tspan>
                   </text>
+                  </g>
                 </g>
                 <g class="hball">
                   <circle r="36" fill="url(#hfg6)"/>
