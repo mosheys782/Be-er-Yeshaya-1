@@ -62,8 +62,67 @@
     .nav-links a:hover { color: var(--royal); }
     .nav-links a::after { content: ''; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.35s ease; }
     .nav-links a:hover::after { transform: scaleX(1); }
-    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
-    .nav-hamburger span { width: 24px; height: 2px; background: var(--royal); }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 0.5rem; z-index: 101; }
+    .nav-hamburger span { width: 24px; height: 2px; background: var(--royal); transition: all 0.35s ease; transform-origin: center; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile menu panel */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; right: 0; bottom: 0;
+      width: min(320px, 85vw);
+      background: linear-gradient(160deg, var(--royal-deep), var(--royal));
+      z-index: 99;
+      padding: 5.5rem 2rem 2rem;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: -20px 0 40px rgba(0, 0, 0, 0.3);
+      overflow-y: auto;
+    }
+    .mobile-menu.open { transform: translateX(0); }
+    .mobile-menu a {
+      display: block;
+      font-size: 1.05rem; font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      padding: 0.95rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+      font-family: var(--serif);
+    }
+    .mobile-menu a:hover { color: var(--gold-bright); padding-left: 0.5rem; }
+    .mobile-menu a.mobile-cta {
+      margin-top: 1.5rem;
+      text-align: center;
+      background: var(--gold);
+      color: var(--royal-deep);
+      border-radius: 50px;
+      padding: 0.85rem 1.5rem;
+      border: none;
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .mobile-menu a.mobile-cta:hover { background: var(--gold-bright); padding-left: 1.5rem; }
+    .mobile-menu-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(15, 26, 69, 0.55);
+      backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+      z-index: 98;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .mobile-menu-overlay.open { opacity: 1; }
+    @media (max-width: 960px) {
+      .mobile-menu, .mobile-menu-overlay { display: block; }
+      body.menu-open { overflow: hidden; }
+    }
 
     /* ========== HERO ========== */
     .hero {
@@ -170,12 +229,11 @@
 
     /* ========== SECTION UTILS ========== */
     .section-label {
-      display: inline-flex; align-items: center; gap: 0.5rem;
+      display: inline-flex; align-items: center;
       font-size: 0.72rem; font-weight: 600;
       letter-spacing: 0.2em; text-transform: uppercase;
       margin-bottom: 1.25rem;
     }
-    .section-label::before { content: ''; width: 24px; height: 3px; border-radius: 2px; }
 
     /* ========== VIDEO CAROUSEL (A look back …) ========== */
     .carousel-section { padding: 6rem 2.5rem; background: var(--cream); }
@@ -232,9 +290,7 @@
       display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
       position: relative; z-index: 1;
     }
-    .growth .section-label { color: var(--teal); }
-    .growth .section-label::before { background: var(--teal); }
-    .growth h2 {
+    .growth .section-label { color: var(--teal); }    .growth h2 {
       font-family: var(--serif);
       font-size: clamp(2rem, 3.5vw, 2.8rem);
       font-weight: 700; line-height: 1.2;
@@ -332,9 +388,7 @@
     .mission { padding: 8rem 2.5rem; background: var(--white); position: relative; overflow: hidden; }
     .mission::after { content: ''; position: absolute; top: 0; right: -200px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(26,175,165,0.06), transparent 70%); border-radius: 50%; }
     .mission-inner { max-width: 900px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
-    .mission .section-label { color: var(--teal); justify-content: center; }
-    .mission .section-label::before { background: var(--teal); }
-    .mission h2 {
+    .mission .section-label { color: var(--teal); justify-content: center; }    .mission h2 {
       font-family: var(--serif);
       font-size: clamp(2rem, 4vw, 3.2rem);
       font-weight: 700; line-height: 1.15;
@@ -362,9 +416,7 @@
     .pillars { padding: 7rem 2.5rem; background: var(--cream); position: relative; overflow: hidden; }
     .pillars::before { content: ''; position: absolute; top: -200px; left: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(139,126,200,0.08), transparent 60%); border-radius: 50%; }
     .pillars-header { text-align: center; max-width: 600px; margin: 0 auto 4rem; position: relative; z-index: 1; }
-    .pillars .section-label { color: var(--lavender); justify-content: center; }
-    .pillars .section-label::before { background: var(--lavender); }
-    .pillars-header h2 {
+    .pillars .section-label { color: var(--lavender); justify-content: center; }    .pillars-header h2 {
       font-family: var(--serif);
       font-size: clamp(2rem, 3.5vw, 2.8rem);
       font-weight: 700;
@@ -419,9 +471,7 @@
       text-align: center;
       max-width: 720px; margin: 0 auto 5rem;
     }
-    .shayala .section-label { color: var(--gold-bright); justify-content: center; }
-    .shayala .section-label::before { background: var(--gold-bright); }
-    .shayala h2 {
+    .shayala .section-label { color: var(--gold-bright); justify-content: center; }    .shayala h2 {
       font-family: var(--serif);
       font-size: clamp(2rem, 3.6vw, 2.9rem);
       font-weight: 700; line-height: 1.18;
@@ -493,9 +543,7 @@
     .leadership { padding: 7rem 2.5rem; background: var(--white); }
     .leadership-inner { max-width: 1100px; margin: 0 auto; }
     .leadership-header { text-align: center; margin-bottom: 4rem; }
-    .leadership .section-label { color: var(--coral); justify-content: center; }
-    .leadership .section-label::before { background: var(--coral); }
-    .leadership-header h2 {
+    .leadership .section-label { color: var(--coral); justify-content: center; }    .leadership-header h2 {
       font-family: var(--serif);
       font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 700;
       color: var(--royal-deep);
@@ -533,9 +581,7 @@
     .resources { padding: 7rem 2.5rem; background: var(--cream); }
     .resources-inner { max-width: 1100px; margin: 0 auto; }
     .resources-header { text-align: center; margin-bottom: 4rem; }
-    .resources .section-label { color: var(--sky); justify-content: center; }
-    .resources .section-label::before { background: var(--sky); }
-    .resources-header h2 {
+    .resources .section-label { color: var(--sky); justify-content: center; }    .resources-header h2 {
       font-family: var(--serif);
       font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 700;
       color: var(--royal-deep);
@@ -602,9 +648,7 @@
       border-radius: 50%;
     }
     .finances-inner { max-width: 1050px; margin: 0 auto; position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .finances .section-label { color: var(--gold-bright); }
-    .finances .section-label::before { background: var(--gold-bright); }
-    .finances h2 {
+    .finances .section-label { color: var(--gold-bright); }    .finances h2 {
       font-family: var(--serif);
       font-size: clamp(2rem, 3.6vw, 3rem);
       font-weight: 700; line-height: 1.18;
@@ -631,9 +675,7 @@
     .contact { padding: 7rem 2.5rem; background: var(--cream); position: relative; overflow: hidden; }
     .contact::before { content: ''; position: absolute; bottom: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(232,168,56,0.08), transparent 60%); border-radius: 50%; }
     .contact-inner { max-width: 1050px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; position: relative; z-index: 1; }
-    .contact .section-label { color: var(--sky); }
-    .contact .section-label::before { background: var(--sky); }
-    .contact-text h2 {
+    .contact .section-label { color: var(--sky); }    .contact-text h2 {
       font-family: var(--serif);
       font-size: clamp(2rem, 3vw, 2.5rem);
       font-weight: 700; line-height: 1.2;
@@ -845,9 +887,22 @@
         <a href="#resources">Resources</a>
         <a href="#finances">Finances</a>
       </div>
-      <button class="nav-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu-overlay" id="mobileOverlay"></div>
+  <aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="#home">Home</a>
+    <a href="#mission">Our Mission</a>
+    <a href="#shayala">Reb Shayala</a>
+    <a href="#leadership">Leadership</a>
+    <a href="#resources">Resources</a>
+    <a href="#finances">Finances</a>
+    <a href="#contact">We're Listening</a>
+    <a href="#contact" class="mobile-cta">Application</a>
+  </aside>
 
   <!-- HERO -->
   <section class="hero" id="home">
@@ -1297,6 +1352,34 @@
   <script>
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+    // ------- Mobile menu -------
+    const hamburger = document.getElementById('navHamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+    function closeMobileMenu() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      mobileOverlay.classList.remove('open');
+      document.body.classList.remove('menu-open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+    }
+    function openMobileMenu() {
+      hamburger.classList.add('open');
+      mobileMenu.classList.add('open');
+      mobileOverlay.classList.add('open');
+      document.body.classList.add('menu-open');
+      hamburger.setAttribute('aria-expanded', 'true');
+      mobileMenu.setAttribute('aria-hidden', 'false');
+    }
+    hamburger.addEventListener('click', () => {
+      if (mobileMenu.classList.contains('open')) closeMobileMenu();
+      else openMobileMenu();
+    });
+    mobileOverlay.addEventListener('click', closeMobileMenu);
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobileMenu));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobileMenu(); });
 
     // Sticky "We're Listening" button — show after hero, hide when contact is in view
     const stickyBtn = document.getElementById('stickyListen');
